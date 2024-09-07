@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 btnMap.put(btnId, btn);
                 btnId++;
             }
-
             tableLayout.addView(tableRow);
         }
         reset();
@@ -96,7 +95,32 @@ public class MainActivity extends AppCompatActivity {
 
     // inverte todas as seleções dos quadradinhos
     private void inverter() {
-        // TODO: IMPLEMENTAR -> Esta é a sua tarefa. Modifique apenas isto.
+        // primeiro instanciando o botão...
+        Button btn;
+        // e a variável id para salvar um estado
+        int id;
+        // implementando o mesmo loop do método reset()
+        for (Map.Entry<Integer, Button> e : btnMap.entrySet())
+        {
+            // inicializando a variável btn
+            btn = e.getValue();
+            // inicializando a variável id
+            id = e.getKey();
+            // checando o array
+            if (arrayQuads[id])
+            {
+                // setando a cor para o tipo "NÃO SELECIONADA"
+                btn.setBackgroundColor(Color.parseColor(COR_UNSELECT));
+            }
+            // caso contrário
+            else
+            {
+                // setando a cor para o tipo "SELECIONADA"
+                btn.setBackgroundColor(Color.parseColor(COR_SELECT));
+            }
+            // invertendo o valor
+            arrayQuads[id] = !arrayQuads[id];
+        }
     }
 
     // limpa todos os quadradinhos
